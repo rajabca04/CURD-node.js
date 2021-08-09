@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  .col-lg-8.mx-auto.mt-5 
+    .card.bg-info 
+      .card-body 
+        h1= message
+        h2= error.status
+        pre #{error.stack}

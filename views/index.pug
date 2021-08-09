@@ -1,0 +1,59 @@
+extends layout
+
+block content
+  .container.mt-4 
+    .row 
+      .col-lg-4 
+        .card 
+          .card-body 
+            form(action="" method="post")
+              .mb-3 
+                label(for="name") Name: 
+                input.form-control(type="text", placeholder="enter name",name="name") 
+              .mb-3 
+                label(for="contact") Contact: 
+                input.form-control(type="text", placeholder="enter contact",name="contact") 
+              .mb-3 
+                label(for="email") Email: 
+                input.form-control(type="text", placeholder="enter email",name="email") 
+              .mb-3 
+                label(for="address") Address: 
+                input.form-control(type="text", placeholder="enter address",name="address") 
+              .mb-3 
+                label(for="Gender") Gender: 
+                .form-check 
+                  input.form-check-input(type="radio",name="gender",value="male")
+                  label.form-check-label Male
+                .form-check 
+                  input.form-check-input(type="radio",name="gender",value="female")
+                  label.form-check-label Female 
+                .mb-3 
+                  label(for="nationality") Nationality:
+                  select.form-select(name="nationality")
+                    option(value="Indian") Indian
+                    option(value="Nepali") Nepali
+                .mb-3 
+                  input.btn.btn-danger.w-100(type="submit", value="Create new record")
+                  
+      .col-lg-8 
+        table.table.table-bordered 
+          tr
+            th ID
+            th Name
+            th Contact
+            th Email
+            th Address
+            th Nationlity
+            th Action
+
+            each x in result 
+              tr
+                td #{x.id}
+                td #{x.name}
+                td #{x.contact}
+                td #{x.email}
+                td #{x.address}
+                td #{x.nationality}
+                td 
+                  a.btn.btn-danger(href="/delete/" +x.id) Delete
+                  a.btn.btn-dark.ms-3(href="/update/" + x.id) Update
